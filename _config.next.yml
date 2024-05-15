@@ -19,12 +19,12 @@ minify: false
 # Define custom file paths.
 # Create your custom files in site directory `source/_data` and uncomment needed files below.
 custom_file_path:
-  #head: source/_data/head.njk
+  head: source/_data/head.njk
   #header: source/_data/header.njk
   #sidebar: source/_data/sidebar.njk
   #postMeta: source/_data/post-meta.njk
   #postBodyStart: source/_data/post-body-start.njk
-  #postBodyEnd: source/_data/post-body-end.njk
+  # postBodyEnd: source/_data/post-body-end.njk
   #footer: source/_data/footer.njk
   #bodyEnd: source/_data/body-end.njk
   #variable: source/_data/variables.styl
@@ -50,7 +50,7 @@ darkmode: true
 
 favicon:
   small: /images/favicon-16x16-next.png
-  medium: /images/favicon-32x32-next.png
+  medium: /imsocial_iconsages/favicon-32x32-next.png
   apple_touch_icon: /images/apple-touch-icon-next.png
   safari_pinned_tab: /images/logo.svg
   #android_manifest: /manifest.json
@@ -65,11 +65,11 @@ creative_commons:
   license: by-nc-sa
   # Available values: big | small
   size: small
-  sidebar: false
-  post: false
+  sidebar: true
+  post: true
   # You can set a language value if you prefer a translated version of CC license, e.g. deed.zh
   # CC licenses are available in 39 languages, you can find the specific and correct abbreviation you need on https://creativecommons.org
-  language:
+  language: deed.zh-hant
 
 # Open graph settings
 # See: https://hexo.io/docs/helpers#open-graph
@@ -93,14 +93,15 @@ open_graph:
 # Value before `||` delimiter is the target link, value after `||` delimiter is the name of Font Awesome icon.
 # External url should start with http:// or https://
 menu:
-  #home: / || fa fa-home
-  #about: /about/ || fa fa-user
-  #tags: /tags/ || fa fa-tags
-  #categories: /categories/ || fa fa-th
-  #archives: /archives/ || fa fa-archive
-  #schedule: /schedule/ || fa fa-calendar
-  #sitemap: /sitemap.xml || fa fa-sitemap
-  #commonweal: /404/ || fa fa-heartbeat
+  home: / || fa fa-home
+  # about: /about/ || fa fa-user
+  # tags: /tags/ || fa fa-tags
+  categories: /categories/ || fa fa-th
+  # archives: /archives/ || fa fa-archive
+  # schedule: /schedule/ || fa fa-calendar
+  # sitemap: /sitemap.xml || fa fa-sitemap
+  # commonweal: /404/ || fa fa-heartbeat
+  RSS: /atom.xml || fa fa-rss
 
 # Enable / Disable menu icons / item badges.
 menu_settings:
@@ -137,9 +138,9 @@ sidebar:
 # Sidebar Avatar
 avatar:
   # Replace the default image and set the url here.
-  url: #/images/avatar.gif
+  url: /images/avatar.png
   # If true, the avatar will be displayed in circle.
-  rounded: false
+  rounded: true
   # If true, the avatar will be rotated with the cursor.
   rotated: false
 
@@ -198,23 +199,23 @@ language_switcher: false
 
 footer:
   # Specify the year when the site was setup. If not defined, current year will be used.
-  #since: 2021
+  # since: 2024
 
   # Icon between year and copyright info.
   icon:
     # Icon name in Font Awesome. See: https://fontawesome.com/icons
-    name: fa fa-heart
+    name: fa-regular fa-lightbulb
     # If you want to animate the icon, set it to true.
-    animated: false
+    animated: true
     # Change the color of icon, using Hex Code.
-    color: "#ff0000"
+    color: ""
 
   # If not defined, `author` from Hexo `_config.yml` will be used.
   # Set to `false` to disable the copyright statement.
-  copyright:
+  copyright: NormalEvan. All Rights Reserved. <br> <b>轉載請附上作者及連結.</b>
 
   # Powered by Hexo & NexT
-  powered: true
+  powered: false
 
   # Beian ICP and gongan information for Chinese users. See: https://beian.miit.gov.cn, https://beian.mps.gov.cn
   beian:
@@ -244,9 +245,13 @@ post_meta:
   item_text: true
   created_at: true
   updated_at:
-    enable: true
-    another_day: true
+    enable: false
+    another_day:
+      true # 如果為 true，則更新時間只會在與創建時間不同的情況下顯示
+      #若不希望更新時間顯示在文章列表中，請將此值設置為 false
+      #並將front matter 中的 updated 設置為 發文時間
   categories: true
+  disqus: false
 
 # Post wordcount display settings
 # Dependencies: https://github.com/next-theme/hexo-word-counter
@@ -276,7 +281,7 @@ follow_me:
   #Twitter: https://twitter.com/username || fab fa-twitter
   #Telegram: https://t.me/channel_name || fab fa-telegram
   #WeChat: /images/wechat_channel.png || fab fa-weixin
-  #RSS: /atom.xml || fa fa-rss
+  RSS: /atom.xml || fa fa-rss
 
 # Related popular posts
 # Dependencies: https://github.com/sergeyzwezdin/hexo-related-posts
@@ -328,7 +333,7 @@ calendar:
 
 # Preload styles and preconnect CDN for fonts and plugins.
 # For more information: https://www.w3.org/TR/resource-hints/#preconnect
-preconnect: false
+preconnect: true
 
 # Set the text alignment in posts / pages.
 text_align:
@@ -355,17 +360,19 @@ codeblock:
   # Code Highlight theme
   # All available themes: https://theme-next.js.org/highlight/
   theme:
-    light: default
-    dark: stackoverflow-dark
+    # light: default
+    # dark: stackoverflow-dark
+    light: base16/material-darker
+    dark: base16/material-darker
   prism:
     light: prism
     dark: prism-dark
   # Add copy button on codeblock
   copy_button:
-    enable: false
+    enable: true
     # Available values: default | flat | mac
-    style:
-  # Fold code block
+    style: mac
+    # Fold code block
   fold:
     enable: false
     height: 500
@@ -379,7 +386,7 @@ back2top:
 
 # Reading progress bar
 reading_progress:
-  enable: false
+  enable: true
   # Available values: left | right
   start_at: left
   # Available values: top | bottom
@@ -399,8 +406,8 @@ bookmark:
 
 # `Follow me on GitHub` banner in the top-right corner.
 github_banner:
-  enable: false
-  permalink: https://github.com/yourname
+  enable: true
+  permalink: https://github.com/piskesocute
 
 # ---------------------------------------------------------------
 # Font Settings
@@ -415,7 +422,7 @@ github_banner:
 # ---------------------------------------------------------------
 
 font:
-  enable: false
+  enable: true
 
   # Uri of fonts host, e.g. https://fonts.googleapis.com (Default).
   host:
@@ -428,7 +435,7 @@ font:
   # Global font settings used for all elements inside <body>.
   global:
     external: true
-    family: Lato
+    family: Noto Sans TC, Roboto
     size:
 
   # Font settings for site title (.site-title).
@@ -451,7 +458,7 @@ font:
   # Font settings for <code> and code blocks.
   codes:
     external: true
-    family:
+    family: Fira Code
 
 # ---------------------------------------------------------------
 # SEO Settings
@@ -566,11 +573,11 @@ math:
 
 # Easily enable fast Ajax navigation on your website.
 # For more information: https://github.com/next-theme/pjax
-pjax: false
+pjax: true
 
 # FancyBox is a tool that offers a nice and elegant way to add zooming functionality for images.
 # For more information: https://fancyapps.com/fancybox/
-fancybox: false
+fancybox: true
 
 # Medium Zoom is a JavaScript library for zooming images like Medium.
 # Warning: Do not enable both `fancybox` and `mediumzoom`.
@@ -584,18 +591,18 @@ lazyload: false
 # Automatically insert whitespace between CJK and half-width characters.
 # For more information: https://github.com/vinta/pangu.js
 # Server-side plugin: https://github.com/next-theme/hexo-pangu
-pangu: false
+pangu: true
 
 # Prefetch links based on what is in the user's viewport.
 # For more information: https://getquick.link
 # Front-matter variable (nonsupport home archive).
 quicklink:
-  enable: false
+  enable: true
 
   # Home page and archive page can be controlled through home and archive options below.
   # This configuration item is independent of `enable`.
-  home: false
-  archive: false
+  home: true
+  archive: true
 
   # Default (true) will initialize quicklink after the load event fires.
   delay: true
@@ -612,13 +619,13 @@ quicklink:
 # For more information: https://animate.style
 motion:
   enable: true
-  async: false
+  async: true
   transition:
     # All available transition variants: https://theme-next.js.org/animate/
-    menu_item: fadeInDown
-    post_block: fadeIn
-    post_header: fadeInDown
-    post_body: fadeInDown
+    menu_item: #fadeInDown
+    post_block: #fadeIn
+    post_header: #fadeInDown
+    post_body: #fadeInDown
     coll_header: fadeInLeft
     # Only for Pisces | Gemini.
     sidebar: fadeInUp
@@ -626,7 +633,7 @@ motion:
 # Progress bar in the top during page loading.
 # For more information: https://github.com/CodeByZach/pace
 pace:
-  enable: false
+  enable: true
   # All available colors:
   # black | blue | green | orange | pink | purple | red | silver | white | yellow
   color: blue
@@ -670,9 +677,9 @@ comments:
 # Disqus
 # For more information: https://disqus.com
 disqus:
-  enable: false
-  shortname:
-  count: true
+  enable: true
+  shortname: normalevan
+  count: false
 
 # DisqusJS
 # For more information: https://disqusjs.skk.moe
@@ -737,10 +744,12 @@ isso: # <data_isso>
 
 # AddToAny Share. See: https://www.addtoany.com
 addtoany:
-  enable: false
+  enable: true
   buttons:
+    - copy_link
     - facebook
     - twitter
+    - line
 
 # ---------------------------------------------------------------
 # Statistics and Analytics
@@ -843,7 +852,7 @@ algolia_search:
 # Local Search
 # Dependencies: https://github.com/next-theme/hexo-generator-searchdb
 local_search:
-  enable: false
+  enable: true
   # If auto, trigger search by changing input.
   # If manual, trigger search by pressing enter key or search button.
   trigger: auto

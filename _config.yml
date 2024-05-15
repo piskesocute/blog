@@ -3,18 +3,22 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 普通伊凡 Normal Evan
-subtitle: "Master的Evan已經有了那我就當個Normal的吧"
+title: Normal Evan
+subtitle: "普通的伊凡 更平易近人"
 description: "F2E-Front End Engineer <br/> 歡迎來到網頁世界"
 keywords: 前端,後端,全端,網頁,技術,網頁開發,前端開發,後端開發,JavaScript,HTML,CSS,SCSS
-author: Evan Chiang
-language: zh-Hant
+author: 伊凡_Evan
+language: zh-TW
 timezone: ""
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: http://example.com
-permalink: :year/:month/:day/:title/
+url: https://normal-evan.com
+# permalink: :category/:year:month:day/:id/
+permalink: :category/:abbrlink/
+abbrlink:
+  alg: crc32 # 算法：crc16(default) and crc32
+  rep: dec # 进制：dec(default) and hex
 permalink_defaults:
 pretty_urls:
   trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
@@ -47,7 +51,7 @@ syntax_highlighter: highlight.js
 highlight:
   line_number: true
   auto_detect: false
-  tab_replace: ""
+  tab_replace: "2"
   wrap: true
   hljs: false
 prismjs:
@@ -67,6 +71,8 @@ index_generator:
 # Category & Tag
 default_category: uncategorized
 category_map:
+  Hexo: hexo
+  雜談: miscellaneous
 tag_map:
 
 # Metadata elements
@@ -96,9 +102,78 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
+# 主題設定
 theme: next
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-  type: ""
+  type: git
+  repo: https://github.com/piskesocute/piskesocute.github.io.git # https://github.com/[你的 GitHub 帳號]/[你的 GitHub 帳號].github.io.git
+  branch: main # 在這邊我是使用 mster 當作主要分支
+
+# searchdb設定
+# Docs: https://github.com/next-theme/hexo-generator-searchdb
+search:
+  path: search.xml
+  field: post
+  content: true
+  format: html
+
+## Hexo-minify Default Config Options
+minify:
+  preview: false ## 本地预览时是否压缩
+  exclude: ["*.min.*"]
+  js:
+    enable: true
+    sourceMap:
+      enable: false ## 生成 sourceMap
+      ## 将 sourceMappingURL 插入压缩后的 js 文件，如果为 false 则需要在浏览器开发者工具中手动添加 sourceMap
+      sourceMappingURL: false ## //# sourceMappingURL=xxx.js.map
+    ## 详细配置: https://github.com/terser/terser#minify-options
+    options: {}
+  css:
+    enable: true
+    ## 详细配置: https://github.com/clean-css/clean-css#compatibility-modes
+    options: {}
+  html:
+    enable: true
+    ## 详细配置: https://github.com/kangax/html-minifier#options-quick-reference
+    options:
+      minifyJS: true # Compressed JavaScript
+      minifyCSS: true # CSS Compressed
+      removeComments: true # Remove the comments
+      collapseWhitespace: true # Delete any extra space
+      removeAttributeQuotes: true # Delete attribute quotes
+  image:
+    enable: true
+    svg:
+      enable: true
+      ## 详细配置: https://github.com/imagemin/imagemin-svgo#imageminsvgooptionsbuffer
+      options: {}
+    jpg:
+      enable: true
+      ## 详细配置: https://github.com/imagemin/imagemin-jpegtran#options
+      options: {}
+    png:
+      enable: true
+      ## 详细配置: https://github.com/imagemin/imagemin-pngquant#options
+      options: {}
+    gif:
+      enable: true
+      ## 详细配置: https://www.npmjs.com/package/imagemin-gifsicle#options
+      options: {}
+    webp:
+      enable: true
+      ## 详细配置: https://github.com/imagemin/imagemin-webp#options
+      options: {}
+  font:
+    enable: false
+    ## 详细配置: https://github.com/Lete114/fontmin-spider#api
+    options: {}
+
+feed:
+  type: atom
+  path: atom.xml
+  limit: 0 # 最大文章數量
+  content: false # 是否顯示內文
