@@ -3,6 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
+
 title: Normal Evan
 subtitle: "普通的伊凡 更平易近人"
 description: "F2E-Front End Engineer <br/> 歡迎來到網頁世界"
@@ -177,3 +178,18 @@ feed:
   path: atom.xml
   limit: 0 # 最大文章數量
   content: false # 是否顯示內文
+
+hide_posts:
+  # 是否启用 hexo-hide-posts
+  enable: true
+
+  # 隐藏文章的 front-matter 标识，也可以改成其他你喜欢的名字
+  filter: hidden
+
+  # 为隐藏的文章添加 noindex meta 标签，阻止搜索引擎收录
+  noindex: true
+  # 让所有隐藏文章在存档页面和分类页面中可见，其他地方不可见
+  # allowlist_generators: ["archive", "category"]
+  # 仅在首页和 RSS 隐藏部分文章，其他地方可见
+  # blocklist_generators: ["index", "feed"]
+  # 更多黑白名单的高级配置示例，可以在 `lib/isGeneratorAllowed.test.js` 文件中查看
